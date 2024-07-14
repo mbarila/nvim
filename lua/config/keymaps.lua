@@ -10,5 +10,6 @@ wk.register({
     b = { builtin.buffers, "Buffers" },
     h = { builtin.help_tags, "Help Tags" },
   },
-  e = { ":NvimTreeToggle<CR>", "Explorer" }
+  e = { ":NvimTreeToggle<CR>", "Explorer" },
+  w = { "VimWiki" }
 }, { prefix = "<leader>" })

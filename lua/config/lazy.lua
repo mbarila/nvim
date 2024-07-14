@@ -52,6 +52,8 @@ require("lazy").setup({
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
+    {'vimwiki/vimwiki'},
+
 },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
