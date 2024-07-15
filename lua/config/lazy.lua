@@ -52,6 +52,8 @@ require("lazy").setup({
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'L3MON4D3/LuaSnip'},
+    {'vimwiki/vimwiki'},
+
 },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -63,7 +65,7 @@ require("lazy").setup({
 
 local lsp_zero = require('lsp-zero')
 
-lsp_zero.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp_zero.default_keymaps({buffer = bufnr})
@@ -88,7 +90,7 @@ require('mason-lspconfig').setup({
         function(server_name)
             -- Default LSP server setup
             require('lspconfig')[server_name].setup{
-                on_attach = function(client, bufnr)
+                on_attach = function(_, bufnr)
                     lsp_zero.default_keymaps({buffer = bufnr})
                     -- You can add more custom on_attach logic here if needed
                 end,
@@ -129,7 +131,7 @@ cmp.setup({
 
     -- scroll up and down the documentation window
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),   
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
     -- navigate between snippet placeholders
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
