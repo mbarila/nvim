@@ -43,16 +43,17 @@ vim.opt.updatetime = 50
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
-    { import = "plugins" },
-    {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
-    {'neovim/nvim-lspconfig'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/nvim-cmp'},
-    {'L3MON4D3/LuaSnip'},
-    {'vimwiki/vimwiki'},
+      -- import your plugins
+      { import = "plugins" },
+      {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
+      {'neovim/nvim-lspconfig'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/nvim-cmp'},
+      {'L3MON4D3/LuaSnip'},
+      {'vimwiki/vimwiki'},
+      { 'echasnovski/mini.nvim', version = false },
 
 },
   -- Configure any other settings here. See the documentation for more details.
