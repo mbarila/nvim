@@ -53,7 +53,6 @@ require("lazy").setup({
       {'hrsh7th/nvim-cmp'},
       {'L3MON4D3/LuaSnip'},
       {'vimwiki/vimwiki'},
-      { 'echasnovski/mini.nvim', version = false },
 
 },
   -- Configure any other settings here. See the documentation for more details.
