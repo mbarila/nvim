@@ -6,6 +6,8 @@ wk.add(
 {
     { "<leader>w", group = "VimWiki" },
     { "<leader>f", group = "Find" },
+    { "<leader>x", group = "Diagnostics" },
+    { "<leader>c", group = "Symbols / Definitions" },
     { "<leader>e", ":NvimTreeToggle<CR>", desc = "Explorer" },
     { "<leader>fb", function () builtin.buffers() end, desc = "Buffers" },
     { "<leader>ff", function () builtin.find_files() end, desc = "Find Files" },
