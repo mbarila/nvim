@@ -19,6 +19,13 @@ return {
                   action = 'Telescope find_files',
                   key = 'f',
               },
+              {
+                  icon = 'ㅍ ',
+                  icon_hl = '@variable',
+                  desc = 'Lsp',
+                  action = 'Mason',
+                  key = 'm',
+              },
           },
       },
   }

@@ -15,6 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
@@ -45,7 +46,7 @@ require("lazy").setup({
   spec = {
       -- import your plugins
       { import = "plugins" },
-      {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+      {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
       {'neovim/nvim-lspconfig'},
@@ -58,7 +59,6 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
-
 
 local lsp_zero = require('lsp-zero')
 
@@ -77,6 +77,7 @@ lsp_zero.set_sign_icons({
   hint = '⚑',
   info = '»'
 })
+
 
 -- to learn how to use mason.nvim
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
