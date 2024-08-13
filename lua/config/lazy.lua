@@ -39,20 +39,21 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 50
+vim.opt.updatetime = 200
 
--- Setup lazy.nvim
+-- Plugin Configuration
+-- This section uses lazy.nvim to manage plugins and their settings.
 require("lazy").setup({
   spec = {
-      -- import your plugins
+      -- Plugin list
       { import = "plugins" },
       {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
       {'neovim/nvim-lspconfig'},
       {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/nvim-cmp'},
-      {'L3MON4D3/LuaSnip'},
+      {'hrsh7th/nvim-cmp', event = "InsertEnter"},
+      {'L3MON4D3/LuaSnip', event = "InsertEnter"},
       {'vimwiki/vimwiki'},
 
 },
@@ -62,15 +63,18 @@ require("lazy").setup({
 
 local lsp_zero = require('lsp-zero')
 
-lsp_zero.on_attach(function(_, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
+local lsp_attach = function(_, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
-end)
+end
 
--- technically these are "diagnostic signs"
--- neovim enables them by default.
--- here we are just changing them to fancy icons.
+-- v4.x setup
+lsp_zero.extend_lspconfig({
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  lsp_attach = lsp_attach,
+  float_border = 'rounded',
+  sign_text = true,
+})
+
 lsp_zero.set_sign_icons({
   error = '✘',
   warn = '▲',
@@ -86,12 +90,12 @@ require('mason-lspconfig').setup({
     ensure_installed = { 'tsserver', 'volar' },
     handlers = {
         function(server_name)
-            -- Default LSP server setup
             require('lspconfig')[server_name].setup{
                 on_attach = function(_, bufnr)
                     lsp_zero.default_keymaps({buffer = bufnr})
                     -- You can add more custom on_attach logic here if needed
                 end,
+                capabilities = require('cmp_nvim_lsp').default_capabilities()
             }
         end
     }
@@ -135,7 +139,5 @@ cmp.setup({
     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
   }),
-  -- note: if you are going to use lsp-kind (another plugin)
-  -- replace the line below with the function from lsp-kind
   formatting = lsp_zero.cmp_format({details = true}),
 })
