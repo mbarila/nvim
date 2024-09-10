@@ -87,7 +87,7 @@ lsp_zero.set_sign_icons({
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'tsserver', 'volar' },
+    ensure_installed = { 'ts_ls', 'volar', 'html', 'eslint', 'volar', 'lua_ls' },
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup{
